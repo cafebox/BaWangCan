@@ -24,10 +24,6 @@ _(:ι」∠)_好饿，但是不想动
 
 ```python
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
   schedule:
     - cron: '0 0 * * */7'  # */7，每周运行
 ```
