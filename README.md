@@ -19,7 +19,6 @@ _(:ι」∠)_好饿，但是不想动
 ## 运行环境
 
  - Github Actions
- - python-package.yml
 
 ## 触发器
 
