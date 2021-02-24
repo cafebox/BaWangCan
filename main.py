@@ -14,7 +14,7 @@ import requests, time, re, json, os
 class runResultThread():
     '''
     免费试执行的自定义线程
-    作用：自动报名免费试，生成表格、并微信推送报名结果
+    作用：自动报名免费试，微信推送报名结果
     '''
     def __init__(self, Cookie, userNickName=None, City=None, CityId=None, SCKEY=None):
         super().__init__()
