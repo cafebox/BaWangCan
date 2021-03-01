@@ -22,7 +22,7 @@ _(:ι」∠)_好饿，但是不想动
 
 ## 该更执行时间
 
-在【***.github/python-packetage.yml***]更改如下代码
+在【***.github/python-packetage.yml***】更改如下代码
 
 ```python
 on:
