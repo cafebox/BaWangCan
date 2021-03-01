@@ -20,7 +20,9 @@ _(:ι」∠)_好饿，但是不想动
 
  - Github Actions
 
-## 触发器
+## 该更执行时间
+
+在【***.github/python-packetage.yml***]更改如下代码
 
 ```python
 on:
