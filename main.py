@@ -38,7 +38,7 @@ class runResultThread():
             # 霸王餐报名
             result = self.runBaWangCan(_activity['detailUrl'].replace('http://s.dianping.com/event/', ''))
             if '请先登录' not in result:
-                self.MESSAGE += '{0:3d}、{1}\n\n'.format(count, _activity['activityTitle'])
+                self.MESSAGE += '{0}、{1}\n\n'.format(count, _activity['activityTitle'])
                 self.MESSAGE += ' - 【报名结果】：{}\n\n'.format(result)
                 count += 1
             else:
