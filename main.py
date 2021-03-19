@@ -40,8 +40,8 @@ class runResultThread():
             # 霸王餐报名，提前结束无谓的挣扎
             result = self.runBaWangCan(offlineActivityId)
             if '请先登录' not in result:
-                self.MESSAGE += '{0:3d}、{1}\n'.format(count, _activity['activityTitle'])
-                self.MESSAGE += ' - 【报名结果】：{}\n'.format(result)
+                self.MESSAGE += '{0:3d}、{1}\n\n'.format(count, _activity['activityTitle'])
+                self.MESSAGE += ' - 【报名结果】：{}\n\n'.format(result)
                 count += 1
             else:
                 self.MESSAGE += 'Cookie失效，请重新获取！！！'
