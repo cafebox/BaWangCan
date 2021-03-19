@@ -30,7 +30,7 @@ on:
     - cron: '0 0 * * */7'  # */7，每周运行
 ```
 
-## Secrets参数说明
+## Secrets参数说明(secrets/actions 中设置)
  - CITY：***城市名（自定义）***
  - CITYID：***城市名的ID（大众点评获取）***
  - COOKIE：***COOKIE（大众点评获取）***
