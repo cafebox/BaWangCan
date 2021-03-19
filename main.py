@@ -9,7 +9,7 @@
 # 作用：
 #    1、霸王餐（免费试）的报名线程
 
-import requests, time, re, json, os
+import requests, time, json, os
 
 class runResultThread():
     '''
@@ -36,10 +36,14 @@ class runResultThread():
         activityTitles = self.getBaWangCanList()    # 获取霸王餐列表
         for _activity in activityTitles:
             # 霸王餐报名
-            self.MESSAGE += '{0:3d}、{1}\n\n'.format(count, _activity['activityTitle'])
-            offlineActivityId = _activity['detailUrl'].replace('http://s.dianping.com/event/', '')
-            self.MESSAGE += '- 【报名结果】：{}\n\n'.format(self.runBaWangCan(offlineActivityId))
-            count += 1
+            result = self.runBaWangCan(_activity['detailUrl'].replace('http://s.dianping.com/event/', ''))
+            if '请先登录' not in result:
+                self.MESSAGE += '{0:3d}、{1}\n'.format(count, _activity['activityTitle'])
+                self.MESSAGE += '- 【报名结果】：{}\n'.format(result)
+                count += 1
+            else:
+                self.MESSAGE += 'Cookie已失效，请重新获取！！！'
+                break
         self.MESSAGE = '---\n\n-----开始报名霸王餐（免费试）-----\n\n用户名：***{0}***\n\n城 市：***{1}***\n\n- 今日报名成功：**{2}**\n\n- 今日报名重复：**{3}**\n\n- 今日报名异常：**{4}**\n\n---\n\n-----今日成果预览-----\n\n'.format(self.userNickName, self.City, self.PASS, self.SKIP, self.FAIL) + self.MESSAGE
         self.weixinTrap()    # 微信推送
 
@@ -47,8 +51,8 @@ class runResultThread():
         '''
         获取霸王餐列表
         '''
-        detail = []
         url = 'http://m.dianping.com/activity/static/pc/ajaxList'
+        detail = []
         headers = {
             'Content-Type': 'application/json',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
@@ -120,9 +124,10 @@ class runResultThread():
         微信推送
         '''
         # 从http://sc.ftqq.com/?c=code获取微信推送的SCKEY，并绑定官微
-        print(self.MESSAGE)
         # url = 'https://sctapi.ftqq.com/{}.send'.format(self.SCKEY)
-        # Server酱升级版，消息格式有变化【暂时没有这个变更需求】
+        # @2021/03/19
+        # Server酱升级版，消息格式有变化【暂时不需要变更需求】
+        print(self.MESSAGE)
         url = 'https://sc.ftqq.com/{}.send'.format(self.SCKEY)
         header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',}
         data = {
