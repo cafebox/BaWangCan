@@ -127,7 +127,9 @@ class runResultThread():
         '''
         # 从http://sc.ftqq.com/?c=code获取微信推送的SCKEY，并绑定官微
         print(self.MESSAGE)
-        url = 'https://sctapi.ftqq.com/{}.send'.format(self.SCKEY)
+        # url = 'https://sctapi.ftqq.com/{}.send'.format(self.SCKEY)
+        # Server酱升级版，消息格式有变化【暂时没有这个变更需求】
+        url = 'https://sc.ftqq.com/{}.send'.format(self.SCKEY)
         header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36',}
         data = {
             'text': '大众点评免费试运行结果',
