@@ -9,12 +9,15 @@
 # 作用：
 #    1、霸王餐（免费试）的报名线程
 
-import requests, time, json, os
+import requests, time, json, os, fake_useragent
+USER_AGENT = fake_useragent.FakeUserAgent().random
 
 class runResultThread():
     '''
     免费试执行的自定义线程
-    作用：自动报名免费试，微信推送报名结果
+    作用：
+        1、自动报名免费试
+        2、微信推送报名结果
     '''
     def __init__(self, Cookie, userNickName=None, City=None, CityId=None, SCKEY=None):
         super().__init__()
@@ -55,7 +58,7 @@ class runResultThread():
         detail = []
         headers = {
             'Content-Type': 'application/json',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
+            'User-Agent': USER_AGENT,
         }
         data = {
             'cityId': self.CityId,
@@ -84,7 +87,7 @@ class runResultThread():
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8;',
             'Cookie': self.Cookie,
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36',
+            'User-Agent': USER_AGENT,
         }
         data = {
             'offlineActivityId': activatyID,
