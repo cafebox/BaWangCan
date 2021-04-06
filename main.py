@@ -10,7 +10,8 @@
 #    1、霸王餐（免费试）的报名线程
 
 import requests, time, json, os, fake_useragent
-USER_AGENT = fake_useragent.FakeUserAgent().random
+# USER_AGENT = fake_useragent.FakeUserAgent().random
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
 
 class runResultThread():
     '''
